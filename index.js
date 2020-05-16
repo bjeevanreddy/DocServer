@@ -7,9 +7,25 @@ require('./config/passportConfig');
 const passport = require('passport');
 const patrouter = require('./routes/patient.routes');
 const docrouter =require('./routes/doctor.routes');
-const app = express();
+const app = express(); 
 app.use(bodyParser.json());
-app.use(cors());
+
+
+var whitelist = [
+    'http://localhost:3000'
+];
+
+var corsOptions = {
+    credentials: true,
+    origin: function(origin, callback) {
+        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
+    allowedHeaders: 'accept, content-type,Authorization'
+};
+
+app.use(cors(corsOptions));
 app.use(passport.initialize());
 app.get('/', function (req, res) {
     res.send('This is Doctor Appointment Application')
