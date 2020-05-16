@@ -1,11 +1,8 @@
-//check env
-
-var env=process.env.NODE_ENV || "development";
-//fetch env.config
-
-var config=require('./config.json');
-var envConfig =config[env];
-
-Object.keys(envConfig).forEach(key => process.env[key] = envConfig[key] );
+module.exports={
+    // secret: 'jeevan',
+    MONGO_URI:'mongodb+srv://jeevan:jeevan@jeevan-9ruiz.mongodb.net/DoctorAppointmentApp?retryWrites=true&w=majority',
+    JWT_SECRET:"jeevan",
+    JWT_EXP:"2d"
+}
 
 

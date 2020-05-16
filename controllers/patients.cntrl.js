@@ -1,6 +1,7 @@
 const patsvc = require('../services/patients.svc');
 const bcrypt = require('bcryptjs');
 const docsvc = require('../services/doctors.svc');
+const config=require('../config/config')
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const patcntrl = {
@@ -28,8 +29,8 @@ const patcntrl = {
                 //regsitered user
                 else if (pat) {
                     let token = jwt.sign({ _id: pat._id },
-                        process.env.JWT_SECRET, {
-                        expiresIn: process.env.JWT_EXP
+                        config.JWT_SECRET, {
+                            expiresIn: config.JWT_EXP
                     });
                     return res.status(200).json({ "token": token, "name": pat.username });
                 }

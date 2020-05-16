@@ -50,7 +50,7 @@ passport.deserializeUser(function (user, done) {
     done(null, user);
 });
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err) => {
+mongoose.connect(config.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, (err) => {
     if (!err)
         console.log("DataBase mongodb connected");
     else {
@@ -58,6 +58,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     }
 });
 //server
-app.listen(process.env.PORT, () => {
-    console.log(`Server Connected on :${process.env.PORT} `);
+const port=process.env.PORT || 3000;
+app.listen(port, function () {
+    console.log(`Server runing on ${port} port`);
 })

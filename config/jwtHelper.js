@@ -1,5 +1,5 @@
 const jwt=require('jsonwebtoken');
-
+const config=require('./config');
 const middleware ={
     verifyJwtTokenPat: async function(req,res,next){
         var token;
@@ -9,7 +9,7 @@ const middleware ={
 
         }
         if(!token) return res.status(403).send({auth: false,message: "NO token provided"});
-        else return jwt.verify(token,process.env.JWT_SECRET,
+        else return jwt.verify(token,config.JWT_SECRET,
             (err,decoded)=>{
                 if(err)
                 {
@@ -30,7 +30,7 @@ const middleware ={
 
         }
         if(!token) return res.status(403).send({auth: false,message: "NO token provided"});
-        else return jwt.verify(token,process.env.JWT_SECRET,
+        else return jwt.verify(token,config.JWT_SECRET,
             (err,decoded)=>{
                 if(err)
                 {

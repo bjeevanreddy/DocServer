@@ -1,5 +1,6 @@
 const patsvc = require('../services/patients.svc');
 const docsvc = require('../services/doctors.svc');
+const config=require('../config/config')
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -27,8 +28,8 @@ const doccntrl = {
                 //regsitered user
                 else if (doc) {
                     let token = jwt.sign({ _id: doc._id },
-                        process.env.JWT_SECRET, {
-                        expiresIn: process.env.JWT_EXP
+                        config.JWT_SECRET, {
+                        expiresIn: config.JWT_EXP
                     });
                     return res.status(200).json({ "token": token, "name": doc.username });
                 }
