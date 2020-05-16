@@ -34,7 +34,7 @@ let patSchema = new mongoose.Schema({
     appointments:[Object]
 });
 
-const patModel = mongoose.model("Patient", patSchema);
+const patModel = mongoose.model("Patients", patSchema);
 
 patSchema.path('email').validate((val) => {
     emailregex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

@@ -5,14 +5,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('./config/passportConfig');
 const passport = require('passport');
-const defaultr=require('./routes/default.route');
 const patrouter = require('./routes/patient.routes');
 const docrouter =require('./routes/doctor.routes');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
-app.use('/',defaultr);
+app.get('/', function (req, res) {
+    res.send('This is Doctor Appointment Application')
+  })
 app.use('/patapi',patrouter);
 app.use('/docapi',docrouter);
 //error validation
