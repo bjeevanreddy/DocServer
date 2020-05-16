@@ -1,0 +1,13 @@
+{
+    "development":{
+        "PORT":3000,
+        "MONGODB_URI":"mongodb://localhost:27017/DoctorAppointment",
+        "JWT_SECRET":"jeevan",
+        "JWT_EXP":"2d"
+    },
+    "production":{
+        "PORT":80,
+        "MONGODB_URI":"mongodb://xxxxxxxxx/DBname",
+        "JWT_EXP":"2d"
+    }
+}
