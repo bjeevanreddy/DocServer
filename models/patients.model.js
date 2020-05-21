@@ -22,9 +22,6 @@ let patSchema = new mongoose.Schema({
         required: 'Password Required!!',
         minlength: [6, "Password must be min 4 charcters"]
     },
-    role: {
-        type: String
-    },
     registeredOn: {
         type: Date, default: Date.now()
     },
