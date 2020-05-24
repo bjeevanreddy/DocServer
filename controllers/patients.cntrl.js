@@ -12,8 +12,8 @@ const patcntrl = {
             req.body.password = bcrypt.hashSync(pwd, 2);
             let result = await patsvc.patRegister(req.body);
             if (result) {
-                res.status(200).send("successful Registration");
-            } else res.status(200).send("Registration Unsuccesfull");
+                res.status(200).send({message:"successful Registration"});
+            } else res.status(200).send({message:"Registration Unsuccesfull"});
         }
         catch (err) {
             if (err.code == 11000) { res.send(["Duplicate data"]); }
